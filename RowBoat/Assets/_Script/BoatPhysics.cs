@@ -48,6 +48,10 @@ public class BoatPhysics : MonoBehaviour {
 		originalVerticesArray = BoatMesh.vertices;
 		originalTrianglesArray = BoatMesh.triangles;
 
+		//These store the final data we need to create the mesh that's underwater
+		underwaterVertices = new List<Vector3>();
+		underwaterTriangles = new List<int>();
+
 		boatRB = GetComponent<Rigidbody>();
 
 		//Change this to stop the boat from oscillating
@@ -72,10 +76,9 @@ public class BoatPhysics : MonoBehaviour {
 	//Will generate the mesh that's under the water
 	//You can display the mesh, but it will float without it, we just need the data
 	void GenerateUnderwaterMesh() {
-		//These store the final data we need to create the mesh that's underwater
+
 		underwaterVertices = new List<Vector3>();
 		underwaterTriangles = new List<int>();
-
 
 		//Loop through all the triangles (3 vertices at a time)
 		int i = 0;
